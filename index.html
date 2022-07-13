@@ -1,12 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora d'equacions</title>
+    <link rel="icon" type="image/png" href="./imatges/pi.png" />
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="estils.css">
+    <link rel="stylesheet" href="./estils_equacio/estils_equacio.css">
+
+    <!-- MATHJAX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#calculadora" class="element-menu">Calculadora</a></li>
+                <li><a href="#procediment" class="element-menu">Procediment</a></li>
+                <li><button id="ajuda" class="element-menu">Ajuda</button></li>
+                <li><button id="idioma" class="element-menu">Idioma</button></li>
+                <li><button id="tema" class="element-menu"><i id="icona-tema"></i></button></li>
+            </ul>
+            <button id="menu-desplegable" class="element-menu"><i id="icona-menu"></i></button>
+        </nav>
+        <h1>CALCULADORA D'EQUACIONS</h1>
+    </header>
     
+    <section class="calculadora">
+        <article>
+            <div id="contenidor-equacio">
+                <input class="entrada" id="entrada-principal">
+            </div>
+            <button id="calcula">Calcula</button>
+        </article>
+
+        <article class="instruccions">
+            <div class="taula-instruccions">
+                
+            </div>
+        </article>
+    </section>
+
+    <section class="procediment">
+
+    </section>
+
+
+
+    <script src="principal.js" defer></script>
+    <script src="estils_equacio/estils_equacio_principal.js" type='module' defer></script>
 </body>
 </html>

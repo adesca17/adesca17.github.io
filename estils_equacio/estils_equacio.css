@@ -1,0 +1,103 @@
+
+
+.calculadora {
+    background-color: inherit;
+}
+
+
+
+#calcula {
+    transition: background-color, transform, outline, .5s ease-out;
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    position: relative;
+    width: 85px;
+    outline: 1px solid;
+    outline-color: var(--color-tema);
+}
+
+#calcula:hover {
+    outline-color: var(--color-fons-tema);
+    outline-offset: 15px;
+    transform: scale(1.05);
+}
+
+#calcula:active {
+    transform: scale(0.95);
+}
+
+
+
+
+#contenidor-equacio {
+    transition: background-color .5s ease-out;
+    background-color: var(--color-fons-2-tema);
+    width: 50%;
+    margin-left: calc(25% - 100px);
+    margin-top: 110px;
+
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color-tema);
+    display: inline-flex;
+}
+
+
+#entrada-principal {
+    transition: background-color .5s ease-out;
+    width: 50%;
+}
+
+.entrada {
+    transition: background-color .5s ease-out;
+    border: none;
+    width: 10px;
+    font-family: 'Noto Sans Math';
+    font-size: 14px;
+    background-color: var(--color-fons-2-tema);
+    color: var(--color-tema);
+}
+
+input:focus {
+    outline: none;
+}
+
+
+
+.fraccio {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.fraccio > div {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.fraccio > .numerador {
+    align-items: flex-end;
+    border-bottom: 1px solid var(--color-tema);
+}
+
+.fraccio > .denominador {
+    align-items: flex-start;
+    border-top: 1px solid var(--color-tema);
+    margin-top: -1px;
+}
+
+.fraccio > div > input {
+    display: block;
+    border: none;
+    padding-left: 2px;
+    text-align: center;
+}
+
+.fraccio .entrada-fraccio {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

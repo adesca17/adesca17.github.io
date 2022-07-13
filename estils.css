@@ -1,0 +1,196 @@
+
+/* Configuracio general */
+@font-face{
+    font-family: 'Noto Sans Math';
+    src: url('./fonts/NotoSansMath-Regular.ttf'); /*https://adesca17.github.io/NotoSansMath-Regular.ttf*/
+}
+@font-face{
+    font-family: 'Varela Round';
+    src: url('./fonts/VarelaRound-Regular.ttf'); /*https://adesca17.github.io/NotoSansMath-Regular.ttf*/
+}
+
+:root {
+    --color-tema: #fff;
+    --color-fons-tema: #38444d;
+    --color-fons-2-tema: rgb(21,32,43);
+}
+
+body {
+    transition: border, background-color  .5s ease-out;
+    font-family: 'Varela Round';
+    color: var(--color-tema);
+    background-color: var(--color-fons-tema);
+}
+
+/* Estils menu */
+h1 {
+    position: absolute;
+    top: 0;
+    margin: 16px;
+    margin-left: 30px;
+    margin-right: 100px;
+    color: var(--color-tema);
+}
+
+button {
+    color: var(--color-tema);
+    background-color: var(--color-fons-2-tema);
+    cursor: pointer;
+}
+
+.menu {
+    transition: border, background-color .5s ease-out;
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-top: 0;
+    background-color: inherit;
+    background-color: var(--color-fons-2-tema);
+}
+
+.element-menu {
+    transition: border, background-color .5s ease-out;
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+    width: 110px;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 10px;
+    outline: none;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    color: var(--color-tema);
+}
+
+#menu-desplegable {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    margin: 10px;
+}
+
+#tema, #menu-desplegable {
+    width: 48px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+#icona-tema, #icona-menu {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    margin-left: 12px;
+    display: block;
+}
+
+#icona-menu {
+    background-image: url(./imatges/menu_clar.png);
+}
+
+#icona-tema {
+    background-image: url(./imatges/lluna.png);
+}
+
+.element-menu:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: brillar 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.element-menu:active {
+    transform: scale(0.95);
+}
+
+.element-menu:hover:before {
+    opacity: 1;
+}
+
+.element-menu:after {
+    transition: border, background-color .5s ease-out;
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-fons-2-tema);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes brillar {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+/* Seccio instruccions */
+section {
+    background-color: var(--color-fons-2-tema);
+}
+
+
+
+
+
+
+
+
+
+/* Adaptacio a mobils */
+@media screen and (max-width: 1050px) {
+    .menu {
+        flex-direction: column;
+        justify-content: space-around;
+        width: 200px;
+        height: 290px;
+        background-color: var(--color-fons-2-tema);
+        position: absolute;
+        right: 0;
+        top: -310px;
+        z-index: 1;
+        transition: all .5s ease-out;
+    }
+
+    #menu-desplegable {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 614px) {
+    #menu-desplegable {
+        margin: 20px;
+    }
+
+    button#calcula {
+        display: block;
+        margin-left: calc(50% - 85px/2);
+    }
+
+    div#contenidor-equacio {
+        margin-left: calc(15%/2);
+        width: 75%;
+    }
+
+}
+
