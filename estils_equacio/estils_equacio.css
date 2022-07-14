@@ -64,7 +64,7 @@ input:focus {
 }
 
 
-
+/* Fraccions */
 .fraccio {
     display: inline-flex;
     flex-direction: column;
@@ -95,9 +95,37 @@ input:focus {
     border: none;
     padding-left: 2px;
     text-align: center;
+    margin-top: 4px;
 }
 
 .fraccio .entrada-fraccio {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Arrels */
+.radicand, .radicand-fraccio {
+    border-top: 1px solid var(--color-tema);
+}
+
+.radicand-fraccio {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.index, .index-fraccio {
+    margin-right: -2px;
+    text-align: right;
+}
+
+.index-fraccio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.arrel-fraccio {
     margin-top: 10px;
     margin-bottom: 10px;
 }

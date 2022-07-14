@@ -1,7 +1,8 @@
 'use strict';
 
-import {redimensionaAmpladaEntrada} from './utils.js'
-import {creaFraccio, eliminaFraccio, eliminaEntradaFraccio} from './fraccions.js'
+import {redimensionaAmpladaEntrada, eliminaEntradaAnterior} from './utils.js'
+import {creaFraccio, eliminaFraccio} from './fraccions.js'
+import {creaArrel, eliminaArrel} from './arrels.js'
 export {entrada_principal}
 
 
@@ -22,8 +23,9 @@ contenidor_equacio.addEventListener('keydown', e => {
     //TODO: Elaborar mes
     // Crea una arrel
     if(e.key === ')' && entrada.value.includes('sqrt(')) {
-        entrada.value = entrada.value.replace('sqrt', '\u221A')
-        return
+        e.preventDefault();
+        creaArrel(entrada);
+        return;
     }
 
     // Crea el simbol +-
@@ -37,19 +39,24 @@ contenidor_equacio.addEventListener('keydown', e => {
         e.preventDefault();
 
         let classe = entrada.classList[1] || entrada.id // Obtenim la classe mes concreta
+        
         // Si es una fraccio, esborra-la
         if(classe === 'entrada-numerador' || classe === 'entrada-denominador') {
             eliminaFraccio(entrada);
         }
 
-        if(classe === 'entrada-fraccio' || classe === 'entrada-principal') {
-            eliminaEntradaFraccio(entrada);
-            
+        // Si es una arrel, esborra-la
+        if(classe === 'radicand' || classe === 'radicand-fraccio') {
+            eliminaArrel(entrada);
         }
 
-        //TODO: el backspace a l'entrada principal ha de portar a l'ultima entrada
-        if(entrada === entrada_principal) {
-
+        // Elimina l'entrada anterior si es el cas
+        if(classe === 'entrada-fraccio' || classe === 'entrada-principal') {
+            try {
+                eliminaEntradaAnterior(entrada);
+            } catch (e) {
+                console.log('No hi ha entrades anteriors.')
+            }
         }
 
     }

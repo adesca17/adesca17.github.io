@@ -1,11 +1,10 @@
 'use strict';
 
 import {redimensionaAmpladaEntrada, permetMoviment} from './utils.js';
-import { entrada_principal } from './estils_equacio_principal.js';
-export {creaFraccio, eliminaFraccio, eliminaEntradaFraccio};
+import {entrada_principal} from './estils_equacio_principal.js';
+export {creaFraccio, eliminaFraccio};
 
 
-//TODO: afegir els simbols + i -
 // Funcio creadora de fraccions
 function creaFraccio(entrada) {
     // Declarem variables
@@ -53,32 +52,44 @@ function creaFraccio(entrada) {
     //Establim el valor en el numerador
     let valor_entrada = entrada.value;
 
-    // Establir el + o el - de la fraccio
-    if(valor_entrada[0] === '+' || valor_entrada[0] === '-' || valor_entrada[0] === '*') {
-        nova_entrada.value = valor_entrada[0];
-        valor_entrada = valor_entrada.substring(1, 10000);
-    } else {
-        nova_entrada.value = '+'
-    }
-
-
-    // Si no hi ha parentesis o n'hi ha pero sense text al davant
-    if(valor_entrada.indexOf('(') === -1 || valor_entrada.indexOf('(') === 0) {
-        entrada_numerador.value = valor_entrada.replace('(', '').replace(')', '');
+    // Si no hi ha parentesis o n'hi ha pero sense text al davant o amb text al darrera
+    if(valor_entrada.indexOf('(') === -1 || valor_entrada.indexOf('(') === 0 || valor_entrada.indexOf(')') !== valor_entrada.length-1) {
+        
+        // Si hi ha text al darrera, crea una fraccio normal sense res al denominador
+        if(valor_entrada.indexOf(')') !== valor_entrada.length-1) {
+            nova_entrada.value = valor_entrada;
+            
+        } else {
+            entrada_numerador.value = valor_entrada.replace('(', '').replace(')', '');
+        }
         entrada.value = ''
+
+        // Establir el + o el - de la fraccio
+        if(valor_entrada[0] === '+' || valor_entrada[0] === '-' || valor_entrada[0] === '*') {
+            nova_entrada.value = valor_entrada[0];
+            valor_entrada = valor_entrada.substring(1, 10000);
+        } else {
+            nova_entrada.value = nova_entrada.value + '+';
+        }
     }
 
-    // Si hi ha parentesis i hi ha text al davant
-    if(valor_entrada.indexOf('(') !== -1 && valor_entrada.indexOf('(') !== 0){
-        entrada_numerador.value = valor_entrada.substring(valor_entrada.indexOf('('), valor_entrada.lenght).replace('(', '').replace(')', '');
-        nova_entrada.value = valor_entrada.replace(`(${entrada_numerador.value}`, '').replace(')', '');
+    // Si hi ha parentesis i hi ha text al davant i no n'hi ha al darrera
+    if(valor_entrada.indexOf('(') !== -1 && valor_entrada.indexOf('(') !== 0 && valor_entrada.indexOf(')') === valor_entrada.length-1) {
+        // Establir el + o el - de la fraccio
+        if(valor_entrada[valor_entrada.indexOf('(')-1] !== '+' && valor_entrada[valor_entrada.indexOf('(')-1] !== '-' && valor_entrada[valor_entrada.indexOf('(')-1] !== '*') {
+            nova_entrada.value = '*';
+        }
+
+        entrada_numerador.value = valor_entrada.substring(valor_entrada.indexOf('('), valor_entrada.length).replace('(', '').replace(')', '');
+        nova_entrada.value = valor_entrada.replace(`(${entrada_numerador.value})`, '') + nova_entrada.value;
         entrada.value = ''
         redimensionaAmpladaEntrada(nova_entrada); // Redimensiona l'amplada de la nova entrada
     }
 
     redimensionaAmpladaEntrada(entrada_numerador); // Redimensiona l'amplada del numerador
+    redimensionaAmpladaEntrada(nova_entrada); // Redimensiona l'amplada de la nova entrada
     entrada_denominador.focus();    // Posa el focus al denominador
-    permetMoviment();   // Permet el desplaçament entre les noves entrades
+    permetMoviment();   // Permet el moviment entre les noves entrades
 }
 
 
@@ -109,21 +120,5 @@ function eliminaFraccio(entrada) {
     
     fraccio.parentElement.removeChild(fraccio); // Eliminem la fraccio
     redimensionaAmpladaEntrada(entrada_seguent);
-    permetMoviment();   // Permet el desplaçament entre les noves entrades
-}
-
-
-
-function eliminaEntradaFraccio(entrada) {   
-    let div = document.createElement('div'); // Creem un div per possibles errors
-    div.className = 'null';
-
-    let entrada_anterior = entrada.previousElementSibling || div;
-    
-    // Eliminem la fraccio que hi ha al davant de l'element
-    if(entrada_anterior.className === 'fraccio') {
-        eliminaFraccio(entrada_anterior.lastElementChild.lastElementChild);
-    }
-
     permetMoviment();   // Permet el desplaçament entre les noves entrades
 }
