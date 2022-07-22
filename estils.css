@@ -143,12 +143,18 @@ button {
 }
 
 
-/* Seccio instruccions */
+/* A totes les seccions */
 section {
     background-color: var(--color-fons-2-tema);
 }
 
 
+/* Procediment */
+.procediment {
+    width: 75%;
+    margin-left: 12.5%;
+    padding: 20px;
+}
 
 
 
@@ -188,8 +194,12 @@ section {
     }
 
     div#contenidor-equacio {
-        margin-left: calc(15%/2);
+        margin-left: 12.5%;
         width: 75%;
+    }
+
+    .procediment {
+        margin-left: 7.5%;
     }
 
 }

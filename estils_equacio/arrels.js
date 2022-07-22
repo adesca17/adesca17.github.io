@@ -1,7 +1,6 @@
 'use strict';
 
 import {redimensionaAmpladaEntrada, permetMoviment} from './utils.js';
-import { entrada_principal } from './estils_equacio_principal.js';
 export {creaArrel, eliminaArrel};
 
 
@@ -20,6 +19,9 @@ function creaArrel(entrada) {
     index.className = 'entrada index';
     radicand.className = 'entrada radicand';
     nova_entrada.className = 'entrada';
+    sup.className = 'sup-index';
+    sub.className = 'sub-radicand';
+    arrel.className = 'arrel';
 
     // Afegim les variables al fragment de document
     sup.appendChild(index);

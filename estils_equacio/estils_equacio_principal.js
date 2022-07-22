@@ -64,34 +64,3 @@ contenidor_equacio.addEventListener('keydown', e => {
     redimensionaAmpladaEntrada(entrada);
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
-//! MATHJAX
-
-/*
-? IDEA: ARRELS I ELEVATS
-!ARRELS:
-
-    MAIN_INPUT
-    --> Primer evaluar si input.lastIndexOf('sqrt(') == 0
-        --> Sí: Crear 2 inputs davant de l'actual
-            --> índex (amb etiquetes sup) - només si input.value.includes(',i') i la i no és 2
-            --> radicand
-            --> Borrar valor de l'actual
-        --> No: Crear 3 inputs davant de l'actual
-            --> input amb info abans de sqrt
-            --> índex (amb etiquetes sup) - només si input.value.includes(',i') i la i no és 2
-            --> radicand
-            --> Borrar l'actual
-
-*/
