@@ -1,8 +1,9 @@
 'use strict';
 
-import {eliminaArrel} from './arrels.js';
-import {eliminaFraccio} from './fraccions.js';
-export {redimensionaAmpladaEntrada, permetMoviment, eliminaEntradaAnterior}
+import { eliminaFraccio } from './fraccions.js';
+import { eliminaArrel } from './arrels.js';
+import { eliminaPotencia } from './potencies.js';
+export { redimensionaAmpladaEntrada, permetMoviment, eliminaEntradaAnterior }
 
 let contenidor_equacio = document.getElementById('contenidor-equacio');
 
@@ -13,7 +14,7 @@ function redimensionaAmpladaEntrada(entrada) {
     let context = canvas.getContext('2d');
     context.font = '14px Noto Sans Math';
     context.textAlign = 'center';
-    let amplada = context.measureText(entrada.value).width + 5;
+    let amplada = context.measureText(entrada.value).width;
     entrada.style.width = `${amplada/entrada.value.length + amplada}px`;
 };
 
@@ -60,6 +61,11 @@ function eliminaEntradaAnterior(entrada) {
     // Eliminem la arrel que hi ha al davant de l'element
     if(element_anterior.lastElementChild.classList[1] === 'radicand' || element_anterior.lastElementChild.classList[1] === 'radicand-fraccio') {
         eliminaArrel(element_anterior.lastElementChild);
+    }
+
+    // Eliminem la potencia que hi ha al davant de l'element
+    if(element_anterior.lastElementChild.classList[1] === 'exponent' || element_anterior.lastElementChild.classList[1] === 'exponent-fraccio') {
+        eliminaPotencia(element_anterior.previousElementSibling);
     }
 
 }

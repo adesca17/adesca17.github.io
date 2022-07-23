@@ -117,7 +117,6 @@ function multiplicaParentesis(p1, p2) {
 function formatParentesis(eq) {
 
     // Si nomes hi ha un numero multiplicant al davant sense parentesis els afegim
-    let nous_parentesis = [];
     let p = '';
     for (let i = 0; i < eq.length; i++) {
         if(eq[i] === '(' && simbols.indexOf(eq[i-1]) === -1) {
@@ -126,11 +125,11 @@ function formatParentesis(eq) {
                 p = eq[i-contador] + p;
                 contador++;
             }
-            nous_parentesis.push(p);
+
+            // Reemplaçem el número per el mateix número entre parèntesis
+            eq = eq.replace(eq.substring(i-contador, i), eq.substring(i-contador, i).replace(p, `(${p})`))
         }
     }
-    nous_parentesis.forEach(p => eq = eq.replace(p, `(${p})`));
-
 
     eq = eq.replaceAll('(', '(+').replaceAll('(+-', '(-');
     p = '';

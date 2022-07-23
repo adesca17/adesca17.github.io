@@ -105,14 +105,19 @@ input:focus {
 
 
 
-/* Arrels */
+/* Arrels i potencies */
 .radicand, .radicand-fraccio {
     border-top: 1px solid var(--color-tema);
 }
 
-.radicand-fraccio {
+.radicand-fraccio, .base-fraccio {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.exponent,  .exponent-fraccio {
+    margin-left: -2px;
+    text-align: left;
 }
 
 .index, .index-fraccio {
@@ -120,7 +125,7 @@ input:focus {
     text-align: right;
 }
 
-.index-fraccio{
+.index-fraccio, .exponent-fraccio{
     margin-top: 10px;
     margin-bottom: 10px;
 }

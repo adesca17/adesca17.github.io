@@ -4,9 +4,9 @@ export {eq_segon_grau};
 
 // Aplica l'algoritme per resoldre equacions de segon grau
 function eq_segon_grau(eq, valor0, valor1, valor2) {
-    let a = valor2;
-    let b = valor1 || 0;
-    let c = valor0 || 0;
+    let a = parseInt(valor2);
+    let b = parseInt(valor1) || 0;
+    let c = parseInt(valor0) || 0;
 
     let x1 = (-b+Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a) || '\\text{no té solució}';
     let x2 = (-b-Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a) || '\\text{no té solució}';

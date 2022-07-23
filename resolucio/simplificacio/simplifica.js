@@ -22,12 +22,6 @@ function simplifica(eq) {
 
 
 
-    //TODO: Simplifica arrels
-
-
-
-
-
     // Simplifica mulitplicacions/parentesis
     if(eq.includes('(')) {
         eq = simplificaParentesis(eq);

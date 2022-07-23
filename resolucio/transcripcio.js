@@ -28,27 +28,42 @@ function transcriureEquacio() {
     equacio_text = equacio_text.replaceAll('<div class="numerador">', '{');
     equacio_text = equacio_text.replaceAll('<div class="denominador">', '{');
 
+    // POTENCIES I ARRELS
+    while(equacio_text.includes('</sup>')) {
+        let index_arrel = equacio_text.indexOf('<sup class="sup-index">');
+        let index_exponent =  equacio_text.indexOf('<sup class="sup-exponent">');
+        
+        // Si no hi ha més arrels o exponents, fem com si fossin a l'index 100000
+        // D'aquesta manera es canviarà únicament l'altre element
+        if(index_arrel === -1) index_arrel = 100000;
+        if(index_exponent === -1) index_exponent = 100000;
+        
+        // Si l'index de l'arrel és major a l'index de l'exponent (és a dir, l'arrel està més a prop)
+        if(index_arrel > index_exponent) {
+            equacio_text = equacio_text.replace('<sup class="sup-exponent">', '^{');
+            equacio_text = equacio_text.replace('</sup>', '}');
+        } else {
+            equacio_text = equacio_text.replace('<sup class="sup-index">', '\\sqrt[');
+            equacio_text = equacio_text.replace('</sup>', ']');
+        }
+    }
 
-    // ARRELS
-    equacio_text = equacio_text.replace('<sup class="sup-index">', '\\sqrt[');
-    equacio_text = equacio_text.replace('<p class="arrel">√', '');
-    equacio_text = equacio_text.replace('<p class="arrel-fraccio">√', '');
-    equacio_text = equacio_text.replace('</p>', '');
-    equacio_text = equacio_text.replace('<sub class="sub-radicand">', '{');
-
-
+    // ARRELS 
+    equacio_text = equacio_text.replaceAll('<p class="arrel">√', '');
+    equacio_text = equacio_text.replaceAll('<p class="arrel-fraccio">√', '');
+    equacio_text = equacio_text.replaceAll('</p>', '');
+    equacio_text = equacio_text.replaceAll('<sub class="sub-radicand">', '{');
+    
 
 
     // GENERAL
     // Convertim els tancaments
     equacio_text = equacio_text.replaceAll('</div></div>', '}');
     equacio_text = equacio_text.replaceAll('</div>', '}');
-    equacio_text = equacio_text.replaceAll('</sup>', ']');
     equacio_text = equacio_text.replaceAll('</sub>', '}');
 
     // Eliminem espais en blanc innecesaris
     equacio_text = equacio_text.replaceAll(' ', '');
-
 
     // ENTRADES
     let i2 = 0;

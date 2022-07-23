@@ -8,13 +8,25 @@ function reduirTermes(eq) {
     
     // Eliminem els possibles espais buits
     eq = eq.filter((elem) => elem !== '');
-
+    
     let valor0 = 0, valor1 = 0, valor2 = 0;
+    let base, exponent, radicand, index;
     for (let i = 0; i < eq.length; i++) {
         if(eq[i].includes('x^{2}')) {
             valor2 += parseInt(eq[i].replace('x^{2}', ''));
+            
         } else if(eq[i].includes('x')) {
             valor1 += parseInt(eq[i].replace('x', ''));
+        
+        } else if(eq[i].includes('^{')) {
+            base = parseInt(eq[i].substring(0, eq[i].indexOf('^{')));
+            exponent = parseInt(eq[i].substring(eq[i].indexOf('^{') + 2, eq[i].indexOf('}')))
+            valor0 += Math.pow(base, exponent);
+
+        } else if(eq[i].includes('sqrt')) {
+            index = parseInt(eq[i].substring(eq[i].indexOf('[') + 1, eq[i].indexOf(']')));
+            radicand = parseInt(eq[i].substring(eq[i].indexOf('{') + 1, eq[i].indexOf('}')))
+            valor0 += Math.pow(radicand, (1/index))
         } else {
             valor0 += parseInt(eq[i]);
         }

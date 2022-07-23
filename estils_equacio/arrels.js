@@ -60,7 +60,7 @@ function creaArrel(entrada) {
     
 
     // Afegim la resta del text davant de l'arrel
-    nova_entrada.value = entrada.value;
+    nova_entrada.value = entrada.value + '+';
     entrada.value = '';
 
     redimensionaAmpladaEntrada(index);
@@ -76,7 +76,7 @@ function eliminaArrel(entrada) {
     let contenidor = entrada.parentElement.parentElement;
     let sub = entrada.parentElement;
 
-    // Si estem en algun lloc d'una fraccio
+    // Si nomes queda un element en la fraccio, canviem la classe de l'ultim input
     if(entrada.classList[1] === 'radicand-fraccio' && contenidor.children.length === 5) {
         sub.nextElementSibling.className = 'entrada entrada-' + contenidor.className;
     }
@@ -88,7 +88,8 @@ function eliminaArrel(entrada) {
     contenidor.removeChild(sub.previousElementSibling); // Elimina l'index
 
     // Establim el valor de l'entrada seguent que es el que hi ha davant de l'arrel
-    sub.nextElementSibling.value = sub.previousElementSibling.value;
+    sub.nextElementSibling.value = sub.previousElementSibling.value + sub.nextElementSibling.value;
+    redimensionaAmpladaEntrada(sub.nextElementSibling);
 
     contenidor.removeChild(sub.previousElementSibling); // Elimina l'entrada anterior
     contenidor.removeChild(sub); // Elimina el radicand
