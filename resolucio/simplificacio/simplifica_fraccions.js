@@ -2,12 +2,9 @@
 
 export { simplificaFraccions };
 
-let simbols = ['+', '-'];
-
 function simplificaFraccions(eq) {
 
     // Separem tots els elements
-    console.log('----------------------------');
     eq = eq.replaceAll('(', ' (').replaceAll(')', ') ').replace('=0', '');
     eq = eq.split(' ');
     for (let i = 0; i < eq.length; i++) {
@@ -68,9 +65,6 @@ function simplificaFraccions(eq) {
 
     // Convertim l'equacio a cadena de text
     eq = eq.toString().replaceAll(',', '').replaceAll(/\s/g, '') + '=0';
-    
 
-    console.log('----------------------------');
     return eq;
-    
 }

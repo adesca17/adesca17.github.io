@@ -1,4 +1,4 @@
-
+'use strict';
 
 export { reduirTermes };
 
@@ -9,22 +9,45 @@ function reduirTermes(eq) {
     // Eliminem els possibles espais buits
     eq = eq.filter((elem) => elem !== '');
 
-    let valor0 = 0, valor1 = 0;
+    let valor0 = 0, valor1 = 0, valor2 = 0;
     for (let i = 0; i < eq.length; i++) {
-        if(eq[i].includes('x')) {
+        if(eq[i].includes('x^{2}')) {
+            valor2 += parseInt(eq[i].replace('x^{2}', ''));
+        } else if(eq[i].includes('x')) {
             valor1 += parseInt(eq[i].replace('x', ''));
         } else {
             valor0 += parseInt(eq[i]);
         }
-        
     }
 
-    eq = `${valor1}x ${valor0} = 0`;
-
-    if(valor0 >= 0) {
-        eq = `${valor1}x + ${valor0} = 0`;
+    // Afegim els signes + si és el cas
+    if(valor0 > 0) {
+        valor0 = '+' + valor0.toString();
     }
 
-    return [eq, valor0, valor1];
+    if(valor1 > 0) {
+        valor1 = '+' + valor1.toString();
+    }
+
+    // Afegim les x
+    valor1 = valor1.toString() + 'x';
+    valor2 = valor2.toString() + 'x^{2}';
+
+    // Eliminem les variables en cas de que el valor sigui 0
+    if(valor0 === 0) {
+        valor0 = '';
+    }
+
+    if(valor1 === '0x') {
+        valor1 = '';
+    }
+
+    if(valor2 === '0x^{2}') {
+        valor2 = '';
+    }
+
+    eq = `${valor2}${valor1}${valor0} = 0`;
+
+    return [eq, valor0, valor1.replace('x', ''), valor2.replace('x^{2}', '')];
 }
 

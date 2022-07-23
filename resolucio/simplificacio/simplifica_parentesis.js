@@ -59,9 +59,15 @@ function multiplicaParentesis(p1, p2) {
         }
 
         if(conjunt[i].includes('x')) {
-            grau = 1;
+            grau += 1;
             conjunt[i].replace('x', '');
         }
+
+        if(conjunt[i].includes('^{2}')) {
+            grau += 1;
+            conjunt[i].replace('^{2}', '');
+        }
+
         quocient = parseInt(conjunt[i]);
         conjunt[i] = {'quocient':quocient, 'grau':grau};
     }
@@ -93,6 +99,11 @@ function multiplicaParentesis(p1, p2) {
         if(resultat[i].grau === 1) {
             resultat_final += 'x';
         }
+
+        if(resultat[i].grau === 2) {
+            resultat_final += 'x^{2}';
+        }
+
     }
 
     return '+(' + resultat_final + ')';
@@ -115,7 +126,6 @@ function formatParentesis(eq) {
                 p = eq[i-contador] + p;
                 contador++;
             }
-            console.log(p)
             nous_parentesis.push(p);
         }
     }

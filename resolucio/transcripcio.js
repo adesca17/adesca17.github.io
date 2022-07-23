@@ -70,20 +70,5 @@ function transcriureEquacio() {
 
     // Retornem l'equacio en format MathJax
     return equacio_text;
-
-
-
-
-    /*
-    !Obtenir el nombre de vegades que apareix una sequencia en una cadena
-
-    var cadena = "Cuantas 'A' hola aparecen hola en o h hola esta cadena."
-    var indices = [];
-    for(var i = 0; i < cadena.length; i++) {
-        if (cadena[i] === "h" && cadena[i+1] === 'o') indices.push(i);
-    }
-    console.log(indices)
-
-
-    //equacio_html.replaceAll(equacio_html.substring) */
+    
 }
