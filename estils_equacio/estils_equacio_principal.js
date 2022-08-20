@@ -71,4 +71,5 @@ contenidor_equacio.addEventListener('beforeinput', e => {
         }
 
     }
+    redimensionaAmpladaEntrada(entrada);
 });
