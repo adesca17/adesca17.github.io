@@ -2,11 +2,11 @@
 /* Configuracio general */
 @font-face{
     font-family: 'Noto Sans Math';
-    src: url('./fonts/NotoSansMath-Regular.ttf'); /*https://adesca17.github.io/NotoSansMath-Regular.ttf*/
+    src: url('./fonts/NotoSansMath-Regular.ttf');
 }
 @font-face{
     font-family: 'Varela Round';
-    src: url('./fonts/VarelaRound-Regular.ttf'); /*https://adesca17.github.io/NotoSansMath-Regular.ttf*/
+    src: url('./fonts/VarelaRound-Regular.ttf');
 }
 
 :root {
@@ -36,6 +36,12 @@ button {
     color: var(--color-tema);
     background-color: var(--color-fons-2-tema);
     cursor: pointer;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 }
 
 .menu {
@@ -144,20 +150,22 @@ button {
 
 
 /* Procediment */
-.procediment {
+.procediment, .ajuda {
     width: 75%;
     margin-left: 12.5%;
     padding: 20px;
     background-color: var(--color-fons-2-tema);
 }
 
+.ajuda {
+    margin-bottom: 100px;
+}
 
 
 
 
 
-
-/* Adaptacio a mobils */
+/* Adaptació a mòbils */
 @media screen and (max-width: 1050px) {
     .menu {
         flex-direction: column;
@@ -198,4 +206,3 @@ button {
     }
 
 }
-

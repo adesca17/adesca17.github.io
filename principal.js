@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 // Canvia entre el tema fosc i el tema clar
 let tema = 'fosc'
 document.getElementById('tema').addEventListener('click', e => {
