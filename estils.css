@@ -1,5 +1,5 @@
 
-/* Configuracio general */
+/* Això permetrà que es puguin utilitzar dos tipus de lletra */
 @font-face{
     font-family: 'Noto Sans Math';
     src: url('./fonts/NotoSansMath-Regular.ttf');
@@ -9,12 +9,14 @@
     src: url('./fonts/VarelaRound-Regular.ttf');
 }
 
+/* Creem variables per als colors */
 :root {
     --color-tema: #fff;
     --color-fons-tema: #38444d;
     --color-fons-2-tema: rgb(21,32,43);
 }
 
+/* Fem canvis generals per a tot el document */
 body {
     transition: border, background-color  .5s ease-out;
     font-family: 'Varela Round';
@@ -149,7 +151,7 @@ nav {
 }
 
 
-/* Procediment */
+/* Estils dels apartats procediment i ajuda */
 .procediment, .ajuda {
     width: 75%;
     margin-left: 12.5%;
@@ -160,9 +162,6 @@ nav {
 .ajuda {
     margin-bottom: 100px;
 }
-
-
-
 
 
 /* Adaptació a mòbils */

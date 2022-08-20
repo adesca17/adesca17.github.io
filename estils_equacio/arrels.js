@@ -31,7 +31,7 @@ function creaArrel(entrada) {
     fd.appendChild(arrel);
     fd.appendChild(sub);
 
-    // Afegim el simbol de l'arrel i afegim l'arrel a l'entrada
+    // Afegim el símbol de l'arrel i afegim l'arrel a l'entrada
     arrel.innerText = '\u221A';
     entrada.parentElement.insertBefore(fd, entrada);
 

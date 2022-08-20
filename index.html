@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Calculadora d'equacions</title>
+
     <link rel="icon" type="image/png" href="./imatges/pi.png" />
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="estils.css">
     <link rel="stylesheet" href="./estils_equacio/estils_equacio.css">
+    
     <script src="principal.js" defer></script>
     <script src="/resolucio/resoldre.js" type="module" defer></script>
     <script src="estils_equacio/estils_equacio_principal.js" type='module' defer></script>
@@ -19,6 +22,7 @@
 </head>
 <body>
     <header>
+        <!-- Creació de la barra de navegació -->
         <nav>
             <h1>CALCULADORA D'EQUACIONS</h1>
             <ul class="menu">
@@ -32,19 +36,21 @@
     </header>
     
     <section>
+        <!-- Aquí hi ha l'entrada amb el botó de calcula -->
         <article class="calculadora" id="seccio-calculadora">
             <div id="contenidor-equacio">
                 <input class="entrada" id="entrada-principal">
             </div>
             <button id="calcula">Calcula</button>
         </article>
-
         
+        <!-- L'apartat amb el procediment -->
         <article class="procediment" id="seccio-procediment">
             <h2>Procediment</h2>
             <p id="procediment">Aquí apareixerà el procediment.</p>
         </article>
 
+        <!-- L'apartat amb l'ajuda -->
         <article class="ajuda" id="seccio-ajuda">
             <h2>Ajuda</h2>
             <p>
@@ -62,7 +68,6 @@
                 per defecte serà dos.
             </p>
         </article>
-
     </section>
 </body>
 </html>
