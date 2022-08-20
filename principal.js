@@ -22,7 +22,7 @@ document.getElementById('tema').addEventListener('click', e => {
 
 
 
-// Desplegar opcions del menu desplegable
+// Desplegar opcions del menú desplegable
 let desplegat = false;
 document.getElementById('menu-desplegable').addEventListener('click', e => {
     if(desplegat) {
