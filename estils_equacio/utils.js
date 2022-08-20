@@ -8,7 +8,7 @@ export { redimensionaAmpladaEntrada, permetMoviment, eliminaEntradaAnterior }
 let contenidor_equacio = document.getElementById('contenidor-equacio');
 
 // Funcions extres
-// Redimensionar l'amplada del text
+// Redimensionar l'amplada del camp de text
 function redimensionaAmpladaEntrada(entrada) { 
     let canvas = redimensionaAmpladaEntrada.canvas || (redimensionaAmpladaEntrada.canvas = document.createElement('canvas'));
     let context = canvas.getContext('2d');
@@ -49,11 +49,11 @@ function permetMoviment(){
     }
 }
 
-
+// Elimina l'element 
 function eliminaEntradaAnterior(entrada) {   
     let element_anterior = entrada.previousElementSibling;
     
-    // Eliminem la fraccio que hi ha al davant de l'element
+    // Eliminem la fracció que hi ha al davant de l'element
     if(element_anterior.className === 'fraccio') {
         eliminaFraccio(element_anterior.lastElementChild.lastElementChild);
     }
@@ -63,9 +63,8 @@ function eliminaEntradaAnterior(entrada) {
         eliminaArrel(element_anterior.lastElementChild);
     }
 
-    // Eliminem la potencia que hi ha al davant de l'element
+    // Eliminem la potència que hi ha al davant de l'element
     if(element_anterior.lastElementChild.classList[1] === 'exponent' || element_anterior.lastElementChild.classList[1] === 'exponent-fraccio') {
         eliminaPotencia(element_anterior.previousElementSibling);
     }
-
 }

@@ -5,7 +5,7 @@ import {entrada_principal} from './estils_equacio_principal.js';
 export {creaFraccio, eliminaFraccio};
 
 
-// Funcio creadora de fraccions
+// Funció creadora de fraccions
 function creaFraccio(entrada) {
     // Declarem variables
     let fd = new DocumentFragment();
@@ -15,7 +15,7 @@ function creaFraccio(entrada) {
     let entrada_numerador = document.createElement('input');
     let entrada_denominador = document.createElement('input');
 
-    // Establim les clases de les variables
+    // Establim les classes CSS de les variables
     fraccio.className = 'fraccio';
     numerador.className = 'numerador';
     denominador.className = 'denominador';
@@ -34,13 +34,13 @@ function creaFraccio(entrada) {
     // Insereix el fragment de document al lloc correcte
     let contenidor = entrada.parentElement; // Obtenim el contenidor de l'entrada
 
-    // Creem una entrada al davant de la fraccio i afegim la fraccio
+    // Creem una entrada al davant de la fracció i afegim la fracció
     let nova_entrada = document.createElement('input');
     nova_entrada.className = 'entrada entrada-fraccio';
     contenidor.insertBefore(nova_entrada, entrada);
     contenidor.insertBefore(fd, entrada);
 
-    // Si estem fora de l'entrada principal afegim una altre entrada darrera de la fraccio
+    // Si no estem a l'entrada principal afegim una altra entrada darrera de la fracció
     if(entrada !== entrada_principal){
         let nova_entrada2 = document.createElement('input');
         nova_entrada2.className = 'entrada entrada-fraccio';
@@ -49,13 +49,13 @@ function creaFraccio(entrada) {
     }
 
 
-    //Establim el valor en el numerador
+    // Establim el valor en el numerador
     let valor_entrada = entrada.value;
 
-    // Si no hi ha parentesis o n'hi ha pero sense text al davant o amb text al darrera
+    // Si no hi ha parèntesis o n'hi ha pero sense text al davant o amb text al darrera
     if(valor_entrada.indexOf('(') === -1 || valor_entrada.indexOf('(') === 0 || valor_entrada.indexOf(')') !== valor_entrada.length-1) {
         
-        // Si hi ha text al darrera, crea una fraccio normal sense res al denominador
+        // Si hi ha text al darrera, crea una fracció normal sense res al denominador
         if(valor_entrada.indexOf(')') !== valor_entrada.length-1) {
             nova_entrada.value = valor_entrada;
             
@@ -64,7 +64,7 @@ function creaFraccio(entrada) {
         }
         entrada.value = ''
 
-        // Establir el + o el - de la fraccio
+        // Establir el + o el - de la fracció
         if(valor_entrada[0] === '+' || valor_entrada[0] === '-' || valor_entrada[0] === '*') {
             nova_entrada.value = valor_entrada[0];
             valor_entrada = valor_entrada.substring(1, 10000);
@@ -73,9 +73,9 @@ function creaFraccio(entrada) {
         }
     }
 
-    // Si hi ha parentesis i hi ha text al davant i no n'hi ha al darrera
+    // Si hi ha parèntesis i hi ha text al davant i no n'hi ha al darrera
     if(valor_entrada.indexOf('(') !== -1 && valor_entrada.indexOf('(') !== 0 && valor_entrada.indexOf(')') === valor_entrada.length-1) {
-        // Establir el + o el - de la fraccio
+        // Establir el + o el - de la fracció
         if(valor_entrada[valor_entrada.indexOf('(')-1] !== '+' && valor_entrada[valor_entrada.indexOf('(')-1] !== '-' && valor_entrada[valor_entrada.indexOf('(')-1] !== '*') {
             nova_entrada.value = '*';
         }
@@ -94,18 +94,18 @@ function creaFraccio(entrada) {
 
 
 
-// Elimina una fraccio donant-li l'entrada denominador o numerador
+// Elimina una fracció donant-li l'entrada denominador o numerador
 function eliminaFraccio(entrada) {
-    // Agafem el div fraccio
+    // Agafem el div fracció
     let fraccio = entrada.parentElement.parentElement;
 
-    // Si nomes hi ha 3 elements al pare vol dir que ha de canviar a entrada entrada-numerador/denominador
+    // Si només hi ha 3 elements al pare vol dir que ha de canviar a entrada entrada-numerador/denominador
     if(fraccio.parentElement.children.length === 3 && fraccio.parentElement.lastElementChild !== entrada_principal) {
         fraccio.parentElement.lastElementChild.className = 'entrada entrada-' + entrada.parentElement.className;
     }
 
 
-    // Si anteriorment hi ha un input, afegim el contingut d'aquell input al del davant
+    // Si anteriorment hi ha una entrada, afegim el contingut d'aquella entrada al del davant
     let div = document.createElement('div'); // Creem un div per possibles errors
     div.className = 'null';
     let entrada_seguent = fraccio.nextElementSibling || div;
@@ -118,7 +118,7 @@ function eliminaFraccio(entrada) {
     entrada_seguent.value = (entrada_anterior.value || '') + fraccio.firstElementChild.firstElementChild.value + (entrada_seguent.value || '')
     entrada_seguent.focus();
     
-    fraccio.parentElement.removeChild(fraccio); // Eliminem la fraccio
+    fraccio.parentElement.removeChild(fraccio); // Eliminem la fracció
     redimensionaAmpladaEntrada(entrada_seguent);
     permetMoviment();   // Permet el desplaçament entre les noves entrades
 }

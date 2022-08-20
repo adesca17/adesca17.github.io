@@ -4,7 +4,7 @@ import {redimensionaAmpladaEntrada, permetMoviment} from './utils.js';
 export {creaArrel, eliminaArrel};
 
 
-// Funcio creadora d'arrels
+// Funció creadora d'arrels
 function creaArrel(entrada) {
     // Declarem variables
     let fd = new DocumentFragment();
@@ -49,7 +49,7 @@ function creaArrel(entrada) {
     entrada.value = valor_entrada.replace(`(${radicand.value}`, '').replace(`;${index.value}`, '');
 
 
-    // En cas d'estar dins de fraccions, canviem i afegim classes per questio d'estils
+    // En cas d'estar dins de fraccions, canviem i afegim classes CSS per qüestió d'estils
     if(entrada.parentElement.className === 'numerador' || entrada.parentElement.className === 'denominador') {
         nova_entrada.className = 'entrada entrada-fraccio';
         entrada.className = 'entrada entrada-fraccio';
@@ -76,18 +76,18 @@ function eliminaArrel(entrada) {
     let contenidor = entrada.parentElement.parentElement;
     let sub = entrada.parentElement;
 
-    // Si nomes queda un element en la fraccio, canviem la classe de l'ultim input
+    // Si només queda un element en la fracció, canviem la classe de l'última entrada
     if(entrada.classList[1] === 'radicand-fraccio' && contenidor.children.length === 5) {
         sub.nextElementSibling.className = 'entrada entrada-' + contenidor.className;
     }
 
-    // Fem focus a l'entrada seguent de despres de l'arrel
+    // Fem focus a l'entrada següent de després de l'arrel
     sub.nextElementSibling.focus();
 
     contenidor.removeChild(sub.previousElementSibling); // Elimina l'arrel
-    contenidor.removeChild(sub.previousElementSibling); // Elimina l'index
+    contenidor.removeChild(sub.previousElementSibling); // Elimina l'índex
 
-    // Establim el valor de l'entrada seguent que es el que hi ha davant de l'arrel
+    // Establim el valor de l'entrada següent que és el que hi ha davant de l'arrel
     sub.nextElementSibling.value = sub.previousElementSibling.value + sub.nextElementSibling.value;
     redimensionaAmpladaEntrada(sub.nextElementSibling);
 

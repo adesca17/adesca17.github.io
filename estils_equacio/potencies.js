@@ -4,7 +4,7 @@ import { redimensionaAmpladaEntrada, permetMoviment } from './utils.js';
 export { creaPotencia, eliminaPotencia };
 
 
-// Funcio creadora d'arrels
+// Funció creadora d'arrels
 function creaPotencia(entrada) {
 
     // Esborrem l'elevat
@@ -17,13 +17,13 @@ function creaPotencia(entrada) {
     let base = document.createElement('input');
     let sup = document.createElement('sup');
 
-    // Establim les clases de les variables
+    // Establim les classes CSS de les variables
     nova_entrada.className = 'entrada';
     exponent.className = 'entrada exponent';
     base.className = 'entrada base';
     sup.className = 'sup-exponent';
 
-    // En cas d'estar dins de fraccions, canviem i afegim classes per questio d'estils
+    // En cas d'estar dins de fraccions, canviem i afegim classes CSS per questió d'estils
     if(entrada.parentElement.className === 'numerador' || entrada.parentElement.className === 'denominador') {
         base.className = 'entrada base-fraccio';
         exponent.className = 'entrada exponent-fraccio';
@@ -52,23 +52,23 @@ function creaPotencia(entrada) {
 function eliminaPotencia(entrada) {
     let contenidor = entrada.parentElement;
 
-    // Si nomes queda un element en la fraccio, canviem la classe de l'ultim input
+    // Si només queda un element en la fracció, canviem la classe de l'última entrada
     if(entrada.classList[1] === 'base-fraccio' && contenidor.children.length === 4) {
         sub.nextElementSibling.className = 'entrada entrada-' + contenidor.className;
     }
 
-    // Fem focus a l'entrada seguent de despres de l'exponent
+    // Fem focus a l'entrada següent de després de l'exponent
     entrada.nextElementSibling.nextElementSibling.focus();
 
     contenidor.removeChild(entrada.nextElementSibling); // Elimina l'exponent
 
-    // Establim el valor de l'entrada seguent que es el que hi ha davant de la base
+    // Establim el valor de l'entrada següent que es el que hi ha davant de la base
     entrada.nextElementSibling.value = entrada.previousElementSibling.value + entrada.nextElementSibling.value;
     redimensionaAmpladaEntrada(entrada.nextElementSibling);
 
     contenidor.removeChild(entrada.previousElementSibling); // Elimina l'entrada anterior
     contenidor.removeChild(entrada); // Elimina el radicand
 
-    permetMoviment();
-
+    permetMoviment(); // Permet el moviment entre les noves entrades
 }
+

@@ -10,14 +10,13 @@ export { entrada_principal };
 let entrada_principal = document.getElementById('entrada-principal');
 let contenidor_equacio = document.getElementById('contenidor-equacio');
 
-//--------------------------------------- PRINCIPAL ---------------------------------------
 contenidor_equacio.addEventListener('beforeinput', e => {
     let entrada = document.activeElement;
     redimensionaAmpladaEntrada(entrada);
 
-    // Crea una fraccio
+    // Crea una fracció
     if(e.data === '/'){
-        e.preventDefault(); // Evitem fer el que faria l'event per defecte, es a dir, escriure '/'
+        e.preventDefault(); // Evitem fer el que faria l'esdeveniment per defecte, és a dir, escriure '/'
         creaFraccio(entrada);
     }
 
@@ -27,13 +26,11 @@ contenidor_equacio.addEventListener('beforeinput', e => {
         creaArrel(entrada);
     }
 
-    // Crea potencies
+    // Crea potències
     if(e.data === '^' && entrada.value.includes('^')) {
         e.preventDefault();
         creaPotencia(entrada);
     }
-
-
 
 
     // Crea el simbol +-
@@ -43,30 +40,28 @@ contenidor_equacio.addEventListener('beforeinput', e => {
     }
 
 
-
-
     // Esborra
     if(e.data === null && entrada.selectionStart === 0) {
         e.preventDefault();
 
-        let classe = entrada.classList[1] || entrada.id // Obtenim la classe mes concreta
+        let classe = entrada.classList[1] || entrada.id // Obtenim la classe més concreta
         
-        // Si es una fraccio, esborra-la
+        // Si és una fracció, esborra-la
         if(classe === 'entrada-numerador' || classe === 'entrada-denominador') {
             eliminaFraccio(entrada);
         }
 
-        // Si es una arrel, esborra-la
+        // Si és una arrel, esborra-la
         if(classe === 'radicand' || classe === 'radicand-fraccio') {
             eliminaArrel(entrada);
         }
 
-        // Si es una potencia, esborra-la
+        // Si és una potència, esborra-la
         if(classe === 'base' || classe === 'base-fraccio') {
             eliminaPotencia(entrada);
         }
 
-        // Elimina l'entrada anterior si es el cas
+        // Elimina l'entrada anterior si és el cas
         if(classe === 'entrada-fraccio' || classe === 'entrada-principal') {
             try {
                 eliminaEntradaAnterior(entrada);
