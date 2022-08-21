@@ -114,7 +114,7 @@ function eliminaFraccio(entrada) {
     // Eliminem l'entrada anterior
     entrada_anterior.parentElement.removeChild(fraccio.previousElementSibling);
 
-    // Agafem el valor de les entrades del costat i les afegim a l'entrada seguent
+    // Agafem el valor de les entrades del costat i les afegim a l'entrada següent
     entrada_seguent.value = (entrada_anterior.value || '') + fraccio.firstElementChild.firstElementChild.value + (entrada_seguent.value || '')
     entrada_seguent.focus();
     
