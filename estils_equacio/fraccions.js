@@ -7,7 +7,7 @@ export {creaFraccio, eliminaFraccio};
 
 // Funció creadora de fraccions
 function creaFraccio(entrada) {
-    // Declarem variables
+    // Es declaren les variables
     let fd = new DocumentFragment();
     let fraccio = document.createElement('div');
     let numerador = document.createElement('div');
@@ -15,14 +15,14 @@ function creaFraccio(entrada) {
     let entrada_numerador = document.createElement('input');
     let entrada_denominador = document.createElement('input');
 
-    // Establim les classes CSS de les variables
+    // S'estableixen les classes CSS de les variables
     fraccio.className = 'fraccio';
     numerador.className = 'numerador';
     denominador.className = 'denominador';
     entrada_numerador.className = 'entrada entrada-numerador';
     entrada_denominador.className = 'entrada entrada-denominador';
 
-    // Afegim les variables al fragment de document
+    // S'afegeixen les variables al fragment de document
     numerador.appendChild(entrada_numerador);
     denominador.appendChild(entrada_denominador);
     fraccio.appendChild(numerador);
@@ -34,13 +34,13 @@ function creaFraccio(entrada) {
     // Insereix el fragment de document al lloc correcte
     let contenidor = entrada.parentElement; // Obtenim el contenidor de l'entrada
 
-    // Creem una entrada al davant de la fracció i afegim la fracció
+    // Es crea una entrada al davant de la fracció i afegim la fracció
     let nova_entrada = document.createElement('input');
     nova_entrada.className = 'entrada entrada-fraccio';
     contenidor.insertBefore(nova_entrada, entrada);
     contenidor.insertBefore(fd, entrada);
 
-    // Si no estem a l'entrada principal afegim una altra entrada darrera de la fracció
+    // Si no s'està a l'entrada principal s'afegeix una altra entrada darrera de la fracció
     if(entrada !== entrada_principal){
         let nova_entrada2 = document.createElement('input');
         nova_entrada2.className = 'entrada entrada-fraccio';
@@ -49,7 +49,7 @@ function creaFraccio(entrada) {
     }
 
 
-    // Establim el valor en el numerador
+    // S'estableix el valor en el numerador
     let valor_entrada = entrada.value;
 
     // Si no hi ha parèntesis o n'hi ha pero sense text al davant o amb text al darrera
@@ -106,19 +106,19 @@ function eliminaFraccio(entrada) {
 
 
     // Si anteriorment hi ha una entrada, afegim el contingut d'aquella entrada al del davant
-    let div = document.createElement('div'); // Creem un div per possibles errors
+    let div = document.createElement('div'); // Es crea un div per possibles errors
     div.className = 'null';
     let entrada_seguent = fraccio.nextElementSibling || div;
     let entrada_anterior = fraccio.previousElementSibling || div;
 
-    // Eliminem l'entrada anterior
+    // S'elimina l'entrada anterior
     entrada_anterior.parentElement.removeChild(fraccio.previousElementSibling);
 
-    // Agafem el valor de les entrades del costat i les afegim a l'entrada següent
+    // S'agafa el valor de les entrades del costat i s'afegeix a l'entrada següent
     entrada_seguent.value = (entrada_anterior.value || '') + fraccio.firstElementChild.firstElementChild.value + (entrada_seguent.value || '')
     entrada_seguent.focus();
     
-    fraccio.parentElement.removeChild(fraccio); // Eliminem la fracció
+    fraccio.parentElement.removeChild(fraccio); // S'elimina la fracció
     redimensionaAmpladaEntrada(entrada_seguent);
     permetMoviment();   // Permet el desplaçament entre les noves entrades
 }

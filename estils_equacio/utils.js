@@ -53,17 +53,17 @@ function permetMoviment(){
 function eliminaEntradaAnterior(entrada) {   
     let element_anterior = entrada.previousElementSibling;
     
-    // Eliminem la fracció que hi ha al davant de l'element
+    // S'elimina la fracció que hi ha al davant de l'element
     if(element_anterior.className === 'fraccio') {
         eliminaFraccio(element_anterior.lastElementChild.lastElementChild);
     }
     
-    // Eliminem la arrel que hi ha al davant de l'element
+    // S'elimina l'arrel que hi ha al davant de l'element
     if(element_anterior.lastElementChild.classList[1] === 'radicand' || element_anterior.lastElementChild.classList[1] === 'radicand-fraccio') {
         eliminaArrel(element_anterior.lastElementChild);
     }
 
-    // Eliminem la potència que hi ha al davant de l'element
+    // S'elimina la potència que hi ha al davant de l'element
     if(element_anterior.lastElementChild.classList[1] === 'exponent' || element_anterior.lastElementChild.classList[1] === 'exponent-fraccio') {
         eliminaPotencia(element_anterior.previousElementSibling);
     }

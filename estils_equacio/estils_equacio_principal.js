@@ -16,7 +16,7 @@ contenidor_equacio.addEventListener('beforeinput', e => {
 
     // Crea una fracció
     if(e.data === '/'){
-        e.preventDefault(); // Evitem fer el que faria l'esdeveniment per defecte, és a dir, escriure '/'
+        e.preventDefault(); // S'evita fer el que faria l'esdeveniment per defecte, és a dir, escriure '/'
         creaFraccio(entrada);
     }
 
@@ -44,7 +44,7 @@ contenidor_equacio.addEventListener('beforeinput', e => {
     if(e.data === null && entrada.selectionStart === 0) {
         e.preventDefault();
 
-        let classe = entrada.classList[1] || entrada.id // Obtenim la classe més concreta
+        let classe = entrada.classList[1] || entrada.id // S'obté la classe més concreta
         
         // Si és una fracció, esborra-la
         if(classe === 'entrada-numerador' || classe === 'entrada-denominador') {

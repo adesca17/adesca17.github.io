@@ -8,31 +8,23 @@ import { aplicaFormat } from './format.js';
 
 
 let procediment = document.getElementById('procediment');
-
 let solucio;
-// El programa comenca a resoldre en el moment de fer click al boto
+
+// El programa comença a resoldre en el moment de fer clic al botó
 document.getElementById('calcula').addEventListener('click', e => {
      
-
-    // Obtenim l'equacio transcrita
+    // S'obté l'equació transcrita
     let eq = transcriureEquacio();
-    procediment.innerText = `Partim de l'equació: $$${eq}$$`;  // Afegim el text
+    procediment.innerText = `Partim de l'equació: $$${eq}$$`;  // Afegim el text al document
 
-
-
-    // Movem els termes a la dreta i apliquem un format determinat
+    // Es mouen els termes a la dreta i apliquem un format determinat
     eq = aplicaFormat(eq);
     procediment.innerText = procediment.innerText + `Movem els termes cap a l'esquerra: $$${eq}$$`;
 
-
-
-    // Simplifiquem l'equacio
+    // Se simplifica l'equació
     let [eq_simplificada, valor0, valor1, valor2] = simplifica(eq);
 
-
-
-
-    // Apliquem algoritme adequat
+    // S'aplica l'algoritme adequat
     if(valor2 === '') {
         solucio = eq_primer_grau(eq_simplificada, valor0, valor1);
         procediment.innerText = procediment.innerText + `Aïllem la x: $$${solucio}$$`;
@@ -41,10 +33,8 @@ document.getElementById('calcula').addEventListener('click', e => {
         procediment.innerText = procediment.innerText + `Apliquem la fórmula ` 
         + `de les equacions de segon grau: $$${solucio}$$`;
     }
-    console.log(eq)
 
-
-    // Fem que MathJax li doni format al text
+    // Es fa que MathJax li doni format al nou text afegit
     MathJax.typeset([procediment]);
 
 });
