@@ -6,9 +6,11 @@ function reduirTermes(eq) {
     eq = eq.replaceAll('+', ' +').replaceAll('-', ' -').replace('=0', '');
     eq = eq.split(' ');
     
-    // Eliminem els possibles espais buits
+    // S'eliminen els possibles espais buits
     eq = eq.filter((elem) => elem !== '');
     
+    // Se sumen tots els termes semblants
+    // També es realitzen les arrels i les potències
     let valor0 = 0, valor1 = 0, valor2 = 0;
     let base, exponent, radicand, index;
     for (let i = 0; i < eq.length; i++) {
@@ -32,7 +34,7 @@ function reduirTermes(eq) {
         }
     }
 
-    // Afegim els signes + si és el cas
+    // S'afegeixen els signes + si és el cas
     if(valor0 > 0) {
         valor0 = '+' + valor0.toString();
     }
@@ -41,11 +43,11 @@ function reduirTermes(eq) {
         valor1 = '+' + valor1.toString();
     }
 
-    // Afegim les x
+    // S'afegeixen les x
     valor1 = valor1.toString() + 'x';
     valor2 = valor2.toString() + 'x^{2}';
 
-    // Eliminem les variables en cas de que el valor sigui 0
+    // S'eliminen les variables en cas de que el valor sigui zero
     if(valor0 === 0) {
         valor0 = '';
     }

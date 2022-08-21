@@ -7,25 +7,25 @@ let simbols = ['+', '-', '*', '·', ')', undefined];
 function simplificaParentesis(eq) {
     eq = formatParentesis(eq);
 
-    // Mentre hi hagi parentesis multplicant, multiplica'ls
+    // Mentre hi hagi parèntesis multiplicant, multiplica'ls
     let p1, p2, index;
     while(eq.includes(')(')) {
-        index = eq.indexOf('+('); // L'index on comença la multiplicacio
+        index = eq.indexOf('+('); // L'índex on comença la multiplicació
 
-        // Agafem el primer parentesis
+        // S'agafa el primer parèntesis
         p1 = eq.substring(eq.indexOf('+('), eq.indexOf(')')+1)
         eq = eq.replace(p1, '');
         p1 = p1.replace('+(', '').replace(')', '');
 
-        // Agafem el segon parentesis
+        // S'agafa el segon parèntesis
         p2 = eq.substring(eq.indexOf('('), eq.indexOf(')')+1)
         eq = eq.replace(p2, '');
         p2 = p2.replace('(', '').replace(')', '');
 
-        // Afegim la multiplicacio al lloc on comença
+        // S'afegeix la multiplicació al lloc on comença
         eq = eq.substring(0, index) + multiplicaParentesis(p1, p2) + eq.substring(index, eq.length);
 
-        // Si no hi ha mes multiplicacions eliminem els parentesis
+        // Si no hi ha més multiplicacions s'eliminen els parèntesis
         if(eq.indexOf(')') !== eq.indexOf(')(')) {
             eq = eq.replace('+(', '').replace(')', '');
         }
@@ -36,21 +36,17 @@ function simplificaParentesis(eq) {
     return eq + '=0';
 }
 
-
-
-
-
 function multiplicaParentesis(p1, p2) {
 
-    // Ajuntem els dos parentesis per donar-li format
+    // S'ajunten els dos parèntesis per donar-li format
     let conjunt = p1 + ' _' + p2;
     conjunt = conjunt.replaceAll('+', ' +').replaceAll('-', ' -').replace(' ', '');
     conjunt = conjunt.split(' ');
 
-    // Eliminem els possibles espais buits
+    // S'eliminen els possibles espais buits
     conjunt = conjunt.filter((elem) => elem !== '');
 
-    // A cada terme li establim un quocient i un grau
+    // A cada terme se li estableix un quocient i un grau
     for (let i = 0; i < conjunt.length; i++) {
         let quocient = 0, grau = 0;
 
@@ -72,24 +68,23 @@ function multiplicaParentesis(p1, p2) {
         conjunt[i] = {'quocient':quocient, 'grau':grau};
     }
 
-    // Obtenim els dos parentesis per separat
+    // S'obtenen els dos parèntesis per separat
     p1 = conjunt.slice(0, conjunt.indexOf('_'));
     p2 = conjunt.slice(conjunt.indexOf('_')+1, conjunt.length);
 
-    // Multipliquem els quocients i sumem els graus
+    // Es multipliquen els quocients i es sumen els graus
     let resultat = [];
     for (let i = 0; i < p1.length; i++) {
         for (let i2 = 0; i2 < p2.length; i2++) {
             resultat.push({'quocient':(p1[i].quocient*p2[i2].quocient), 'grau':p1[i].grau+p2[i2].grau});
         }
     }
-
     
-    // Obtenim l'expressio en format MathJax
+    // S'obté l'expressió en format MathJax
     let resultat_final = '';
     for (let i = 0; i < resultat.length; i++) {
 
-        // Si el quocient es més petit que 0 el signe es negatiu, sino positiu
+        // Si el quocient es més petit que zero el signe es negatiu, sinó positiu
         if(resultat[i].quocient < 0) {
             resultat_final += resultat[i].quocient.toString();
         } else {
@@ -109,14 +104,10 @@ function multiplicaParentesis(p1, p2) {
     return '+(' + resultat_final + ')';
 }
 
-
-
-
-
-// Per posar el signe correcte als parentesis i posar-ne si és necessari
+// Per posar el signe correcte als parèntesis i posar-ne si és necessari
 function formatParentesis(eq) {
 
-    // Si nomes hi ha un numero multiplicant al davant sense parentesis els afegim
+    // Si només hi ha un numero multiplicant al davant sense parèntesis, s'afegeixen
     let p = '';
     for (let i = 0; i < eq.length; i++) {
         if(eq[i] === '(' && simbols.indexOf(eq[i-1]) === -1) {
@@ -126,7 +117,7 @@ function formatParentesis(eq) {
                 contador++;
             }
 
-            // Reemplaçem el número per el mateix número entre parèntesis
+            // Es reemplaça el numero pel mateix numero entre parèntesis
             eq = eq.replace(eq.substring(i-contador, i), eq.substring(i-contador, i).replace(p, `(${p})`))
         }
     }

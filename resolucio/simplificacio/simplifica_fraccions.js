@@ -4,15 +4,15 @@ export { simplificaFraccions };
 
 function simplificaFraccions(eq) {
 
-    // Separem tots els elements
+    // Se separen tots els elements
     eq = eq.replaceAll('(', ' (').replaceAll(')', ') ').replace('=0', '');
     eq = eq.split(' ');
     for (let i = 0; i < eq.length; i++) {
         if(!eq[i].includes('(')) eq[i] = eq[i].replaceAll('+', ' +').replaceAll('-', ' -');
     }
-    eq = eq.toString().replaceAll(',', ''); // Convertim l'equacio a cadena de text
+    eq = eq.toString().replaceAll(',', ''); // Es converteix l'equació a cadena de text
 
-    // Extraiem totes les fraccions
+    // S'extrau totes les fraccions
     let fraccions = [];
     for (let i = 0; i < eq.length; i++) {
         let numerador = '', denominador = '', simbol = '';
@@ -29,27 +29,27 @@ function simplificaFraccions(eq) {
         }
     }
 
-    // Afegim espais i creem un array on separem per aquests
+    // S'afegeixen espais i es crea una llista on se separa per aquests
     eq = eq.split(' ');
 
-    // Eliminem els possibles espais buits
+    // S'eliminen els possibles espais buits
     eq = eq.filter((elem) => elem !== '');
     
-    // Posem parentesis a cada element de l'equacio si no en tenen ja
+    // Es posen parèntesis a cada element de l'equació si no en tenen
     for (let i = 0; i < eq.length; i++) {
         if(!eq[i].includes('(')) eq[i] = eq[i][0] + '(' + eq[i].substring(1, eq[i].length) + ')';
     }
 
-    // Multipliquem cada denominador per la resta d'elements de l'equacio
+    // Es multiplica cada denominador per la resta d'elements de l'equació
     for (let i = 0; i < fraccions.length; i++) {
-        // "Multipliquem" el denominador per cada element de l'equacio que no sigui una fraccio
+        // Es multiplica el denominador per cada element de l'equació que no sigui una fracció
         for (let i2 = 0; i2 < eq.length; i2++) {
             eq[i2] = eq[i2] + fraccions[i].denominador;
         }
         
         for (let i2 = 0; i2 < fraccions.length; i2++) {
             
-            // Si es el mateix element no fem res
+            // Si és el mateix element no es fa res
             if(fraccions[i] === fraccions[i2]) {
                 continue;
             }
@@ -58,12 +58,12 @@ function simplificaFraccions(eq) {
     }
 
 
-    // Afegim els numeradors de les fraccions a l'equacio
+    // S'afegeixen els numeradors de les fraccions a l'equació
     for (let i = 0; i < fraccions.length; i++) {
         eq.push(fraccions[i].simbol + fraccions[i].numerador);
     }
 
-    // Convertim l'equacio a cadena de text
+    // Es converteix l'equació a cadena de text
     eq = eq.toString().replaceAll(',', '').replaceAll(/\s/g, '') + '=0';
 
     return eq;
