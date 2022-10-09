@@ -34,7 +34,7 @@ contenidor_equacio.addEventListener('beforeinput', e => {
 
 
     // Crea el simbol +-
-    if(e.data === '-' && e.data === '-' && entrada.value[entrada.value.length-1] === '+') {
+    if(e.data === '-' && entrada.value[entrada.value.length-1] === '+') {
         e.preventDefault();
         entrada.value = entrada.value.substring(0, entrada.value.length-1) + '\u00B1';
     }
