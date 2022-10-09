@@ -8,7 +8,7 @@ export { creaPotencia, eliminaPotencia };
 function creaPotencia(entrada) {
 
     // S'esborra l'elevat
-    entrada.value = entrada.value.replaceAll('^', '');    
+    entrada.value = entrada.value.replaceAll('e', '');    
 
     // Es declaren les variables
     let fd = new DocumentFragment();
