@@ -29,6 +29,7 @@ contenidor_equacio.addEventListener('beforeinput', e => {
     // Crea potències
     if(e.data === '^') {
         e.preventDefault();
+        entrada.value = entrada.value.replaceAll('^', ''); 
         creaPotencia(entrada);
     }
 
